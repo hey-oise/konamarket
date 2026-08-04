@@ -2,7 +2,7 @@ import { Minus, ShoppingBasketIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Product({name = "", price = 0, imageLink = "", isCart = false, onAdd = () => {}, onRemove = () => {}}) {
+export default function Product({name = "", imageLink = "", isCart = false, onAdd = () => {}, onRemove = () => {}}) {
   return (
     <div className="flex flex-row gap-5 m-auto hover:scjale-101 transition-all duration-500">
       <div className="w-40 h-70 rounded-2xl overflow-hidden border border-amber-700 relative">
@@ -12,7 +12,6 @@ export default function Product({name = "", price = 0, imageLink = "", isCart = 
           <Link target="_blank" href={`https://wa.me/2349077453404?text=hi, i need one ${name}`}  className="w-full">
           <p className="text-gray-200 capitalize font-bold text-md">{name}
           </p>
-            <p className="text-green-200 capitalize text-sm font-bold">₦{price}</p>
           </Link>
                 </div>
               </div>

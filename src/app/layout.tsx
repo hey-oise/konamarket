@@ -8,12 +8,35 @@ const popins = Poppins({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "konamarket",
-  description: "buy groceries and more",
-};
+  description:
+    "Shop quality groceries & house hold item.",
 
+
+  authors: [{ name: "konamarket" }],
+  creator: "Oise Okugbe",
+  publisher: "konamarket",
+
+  openGraph: {
+    title: "konamarket",
+    description:
+      "Shop quality groceries & house hold item.",
+    url: "https://konamarket.vercel.app", // Replace with the real domain
+    siteName: "konamarket",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "konamarket",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+};
 export default function RootLayout({
   children,
 }: Readonly<{

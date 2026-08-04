@@ -10,7 +10,6 @@ export default function Cart() {
   type CartItem = {
     id: number;
     name: string;
-    price: number;
     imageLink: string;
   };
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -46,13 +45,13 @@ export default function Cart() {
   return (
     <>
       <Link href={"/"} className="flex tex-sm items-center justify-center text-amber-400 active:bg-amber-200/50  hover:bg-amber-200/40 p-1 rounded-full fixed left-3 top-3"><ChevronLeft /></Link>
-      <div className="capitalize text-xl font-bold text-amber-500 mx-auto mt-30 flex gap-2 justify-center items-center mb-30"><ShoppingCartIcon /> your cart</div>
+      <div className="capitalize text-xl font-bold text-amber-500 mx-auto mt-5 flex gap-2 justify-center items-center mb-30"><ShoppingCartIcon /> your cart</div>
 
         {cart.length > 0 ?
           <div className="grid md:grid-cols-4 grid-cols-2 lg:grid-cols-6 sm:grid-cols-3 w-fit gap-5 sm:gap-8 mb-40 mx-auto">
           {cart.map((item) => {
               return (
-                <Product onAdd={() => addCart(item)} onRemove={() => removeCart(item.id)} isCart={true} key={item.id} name={item.name} price={item.price} imageLink={item.imageLink} />
+                <Product onAdd={() => addCart(item)} onRemove={() => removeCart(item.id)} isCart={true} key={item.id} name={item.name} imageLink={item.imageLink} />
               )
             })}
           </div>
