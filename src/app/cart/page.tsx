@@ -30,7 +30,7 @@ export default function Cart() {
     setCart(newCart);
     localStorage.setItem("kona_market_cart", JSON.stringify(newCart || "[]"));
   }
-  function addCart(item: { id: number, name: string, price: number, imageLink: string }) {
+  function addCart(item: { id: number, name: string, imageLink: string }) {
     const konaCart = localStorage.getItem("kona_market_cart");
     const phrasedCart = JSON.parse(konaCart || "[]");
     phrasedCart.push(item);
