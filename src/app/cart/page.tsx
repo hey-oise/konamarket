@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Footer from "../footer";
 
 export default function Cart() {
   type CartItem = {
@@ -48,7 +49,7 @@ export default function Cart() {
       <div className="capitalize text-xl font-bold text-amber-500 mx-auto mt-5 flex gap-2 justify-center items-center mb-30"><ShoppingCartIcon /> your cart</div>
 
         {cart.length > 0 ?
-          <div className="grid md:grid-cols-4 grid-cols-2 lg:grid-cols-6 sm:grid-cols-3 w-fit gap-5 sm:gap-8 mb-40 mx-auto">
+          <div className="m-auto grid md:grid-cols-4 grid-cols-2 lg:grid-cols-6 sm:grid-cols-3 w-fit gap-3 sm:gap-8 mt-40 mb-40 px-2">
           {cart.map((item) => {
               return (
                 <Product onAdd={() => addCart(item)} onRemove={() => removeCart(item.id)} isCart={true} key={item.id} name={item.name} imageLink={item.imageLink} />
@@ -67,7 +68,8 @@ export default function Cart() {
         }} className="bg-red-500 w-1/2 h-10 capitalize font-bold text-amber-200 cursor-pointer">clear cart</button>
         <button onClick={() => {
           localStorage.setItem("kona_market_cart", "");
-          redirect(`https://wa.me/2349077453404?text=hi, i need one ${cart.map(item => "1 " + item?.name)} calculate my cost`);
+          if (cart.length > 0)
+          redirect(`https://wa.me/2349077453404?text=hi, i need ${cart.map(item => "1 " + item?.name)} calculate my cost`);
         }} className="bg-green-500 w-1/2 h-10 capitalize font-bold text-amber-200 cursor-pointer">check out</button>
 
       </div>
