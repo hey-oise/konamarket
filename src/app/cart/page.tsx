@@ -7,8 +7,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default function Cart() {
-  const [cart, setCart] = useState([]);
-
+  type CartItem = {
+    id: number;
+    name: string;
+    price: number;
+    imageLink: string;
+  };
+  const [cart, setCart] = useState<CartItem[]>([]);
   // Cookies.set("cart", JSON.stringify([{ id: 20, name: "Golden Morn", price: "Cereal Maize 450g", imageLink: "/product/milo.jpg" }] ), {expires : 30})
   async function getCart() {
     const konaCart = localStorage.getItem("kona_market_cart");
@@ -24,13 +29,13 @@ export default function Cart() {
   function removeCart(id: number) {
     const newCart = cart.filter(item => item?.id !== id);
     setCart(newCart);
-    localStorage.setItem("kona_market_cart", JSON.stringify(newCart));
+    localStorage.setItem("kona_market_cart", JSON.stringify(newCart || "[]"));
   }
   function addCart(item: { id: number, name: string, price: number, imageLink: string }) {
     const konaCart = localStorage.getItem("kona_market_cart");
     const phrasedCart = JSON.parse(konaCart || "[]");
     phrasedCart.push(item);
-    localStorage.setItem("kona_market_cart", JSON.stringify(phrasedCart));
+    localStorage.setItem("kona_market_cart", JSON.stringify(phrasedCart || "[]"));
     setCart(phrasedCart)
   }
 
